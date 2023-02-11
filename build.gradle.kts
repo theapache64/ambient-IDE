@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.0"
     id("org.jetbrains.intellij") version "1.8.0"
     kotlin("plugin.serialization") version "1.8.0"
+    kotlin("kapt") version "1.8.0"
 }
 
 group = "com.github.theapache64"
@@ -10,9 +11,19 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
+
+    implementation("com.github.theapache64:cyclone:1.0.0-alpha02")
+
+    val daggerVersion = "2.45"
+    implementation("com.google.dagger:dagger:$daggerVersion")
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
+
     implementation(project(":fast-file-watcher"))
     implementation(project(":kotlin-WLED"))
 
