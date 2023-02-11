@@ -15,6 +15,7 @@ private interface WLEDApi {
     suspend fun updateState(
         @Body state: State
     ): UpdateStateResponse
+
 }
 
 class WLED(
