@@ -1,0 +1,34 @@
+[
+  {
+    "regex": ".+INFO - ild\\.invoker\\.GradleBuildInvoker - About to execute Gradle tasks: .+assemble.+",
+    "segment": {
+      "col": [
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "fx": 28,
+      "sx": 150,
+      "ix": 128,
+      "pal": 3
+    }
+  },
+  {
+    "regex": ".+INFO - a.run.tasks.AbstractDeployTask - Install successfully finished in .+",
+    "segment": {
+      "col": [
+        [
+          0,
+          255,
+          0
+        ]
+      ],
+      "fx": 28,
+      "sx": 150,
+      "ix": 128,
+      "pal": 3
+    }
+  }
+]

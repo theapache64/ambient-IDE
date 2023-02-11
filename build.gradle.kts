@@ -1,7 +1,8 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.7.10"
+    id("org.jetbrains.kotlin.jvm") version "1.8.0"
     id("org.jetbrains.intellij") version "1.8.0"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 group = "com.github.theapache64"
@@ -9,6 +10,14 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation(project(":fast-file-watcher"))
+    implementation(project(":kotlin-WLED"))
+
+    // Kotlinx Serialization JSON : Kotlin multiplatform serialization runtime library
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
 }
 
 // Configure Gradle IntelliJ Plugin
