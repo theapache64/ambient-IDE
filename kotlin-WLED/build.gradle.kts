@@ -16,7 +16,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 
     // Kotlinx Serialization JSON : Kotlin multiplatform serialization runtime library
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
     // Retrofit : A type-safe HTTP client for Android and Java.
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
