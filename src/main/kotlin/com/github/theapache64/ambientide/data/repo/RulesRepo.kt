@@ -21,7 +21,10 @@ class RulesRepoImpl(
         val (value, duration) = measureTimedValue<List<Rule>> {
             val configFile = getToolHome().resolve(ide.configName)
             if (!configFile.exists()) {
-                val configStream = ClassLoader.getSystemClassLoader().getResourceAsStream(ide.defaultConfig) ?: error("Couldn't read ${ide.defaultConfig}")
+                // val configStream = javaClass.getResourceAsStream(ide.defaultConfig) ?: error("Couldn't read ${ide.defaultConfig}")
+                Thread.currentThread().contextClassLoader = RulesRepoImpl::class.java.classLoader
+                val configStream = Thread.currentThread().contextClassLoader.getResourceAsStream(ide.defaultConfig)
+                    ?: error("Couldn't read ${ide.defaultConfig}")
                 val text = configStream.bufferedReader().readText()
                 println("Writing default config...")
                 configFile.writeText(text)
@@ -35,9 +38,9 @@ class RulesRepoImpl(
 
 
     private fun getToolHome(): File {
-        val toolHome =  System.getProperty("user.home") + File.separator + ".config" + File.separator + "ambient-IDE"
+        val toolHome = System.getProperty("user.home") + File.separator + ".config" + File.separator + "ambient-IDE"
         return File(toolHome).also {
-            if(!it.exists()){
+            if (!it.exists()) {
                 it.mkdirs()
             }
         }

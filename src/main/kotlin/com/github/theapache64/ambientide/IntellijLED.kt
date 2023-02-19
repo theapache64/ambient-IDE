@@ -33,7 +33,7 @@ class IntellijLED(
         for (rule in rules) {
             if (rule.regex.matches(line)) {
                 ledRepo.updateSingleSegment(rule.segment).also {
-                    println("WLED State : isUpdated=`$it`")
+                    println("WLED State updated : isUpdated=`$it`")
                 }
                 break
             }
