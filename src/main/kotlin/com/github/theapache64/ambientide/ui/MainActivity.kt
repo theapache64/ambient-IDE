@@ -1,10 +1,10 @@
-package com.github.theapache64.intellijled.ui
+package com.github.theapache64.ambientide.ui
 
-import com.github.theapache64.intellijled.App.Companion.args
-import com.github.theapache64.intellijled.IntellijLED
-import com.github.theapache64.intellijled.data.repo.RulesRepoImpl
-import com.github.theapache64.intellijled.data.repo.WLEDRepoImpl
-import com.github.theapache64.intellijled.model.IDE
+import com.github.theapache64.ambientide.App.Companion.args
+import com.github.theapache64.ambientide.IntellijLED
+import com.github.theapache64.ambientide.data.repo.RulesRepoImpl
+import com.github.theapache64.ambientide.data.repo.WLEDRepoImpl
+import com.github.theapache64.ambientide.model.IDE
 import com.github.theapache64.wled.WLED
 import com.theapache64.cyclone.core.Activity
 import kotlinx.coroutines.runBlocking

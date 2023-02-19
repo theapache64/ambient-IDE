@@ -1,4 +1,4 @@
-package com.github.theapache64.intellijled.model
+package com.github.theapache64.ambientide.model
 
 import com.github.theapache64.wled.model.State
 import kotlinx.serialization.KSerializer
@@ -22,6 +22,8 @@ data class Rule(
     @Serializable(with = RegexAsStringSerializer::class)
     val regex: Regex,
     @SerialName("segment")
-    val segment: State.Segment
+    val segment: State.Segment,
+    @SerialName("bri")
+    val brightness: Int = 50
 )
 

@@ -4,31 +4,54 @@
     "segment": {
       "col": [
         [
+          255,
           0,
-          0,
-          255
-        ]
+          242,
+          0
+        ],
+        [],
+        []
       ],
       "fx": 27,
-      "sx": 150,
-      "ix": 128,
-      "pal": 0
+      "sx": 184,
+      "ix": 111
     }
   },
   {
     "regex": ".+INFO - a.run.tasks.AbstractDeployTask - Install successfully finished in .+",
+    "bri": 20,
     "segment": {
       "col": [
         [
-          0,
+          60,
           255,
+          0,
           0
-        ]
+        ],
+        [],
+        []
       ],
-      "fx": 27,
-      "sx": 150,
-      "ix": 128,
-      "pal": 0
+      "fx": 0,
+      "sx": 184,
+      "ix": 111
+    }
+  },
+  {
+    "regex": ".+INFO - ild.invoker.GradleBuildInvoker - Gradle build failed in .+",
+    "segment": {
+      "col": [
+        [
+          255,
+          0,
+          13,
+          0
+        ],
+        [],
+        []
+      ],
+      "fx": 1,
+      "sx": 224,
+      "ix": 45
     }
   }
 ]

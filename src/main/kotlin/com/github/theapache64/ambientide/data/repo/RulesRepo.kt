@@ -1,7 +1,7 @@
-package com.github.theapache64.intellijled.data.repo
+package com.github.theapache64.ambientide.data.repo
 
-import com.github.theapache64.intellijled.model.IDE
-import com.github.theapache64.intellijled.model.Rule
+import com.github.theapache64.ambientide.model.IDE
+import com.github.theapache64.ambientide.model.Rule
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -35,7 +35,7 @@ class RulesRepoImpl(
 
 
     private fun getToolHome(): File {
-        val toolHome =  System.getProperty("user.home") + File.separator + ".config" + File.separator + "intellij-led"
+        val toolHome =  System.getProperty("user.home") + File.separator + ".config" + File.separator + "ambient-IDE"
         return File(toolHome).also {
             if(!it.exists()){
                 it.mkdirs()

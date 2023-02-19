@@ -1,6 +1,6 @@
-package com.github.theapache64.intellijled
+package com.github.theapache64.ambientide
 
-import com.github.theapache64.intellijled.ui.MainActivity
+import com.github.theapache64.ambientide.ui.MainActivity
 import com.theapache64.cyclone.core.Application
 import com.theapache64.cyclone.core.Intent
 

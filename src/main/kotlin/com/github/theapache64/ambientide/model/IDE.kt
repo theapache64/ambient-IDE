@@ -1,4 +1,4 @@
-package com.github.theapache64.intellijled.model
+package com.github.theapache64.ambientide.model
 
 enum class IDE(
     val defaultConfig : String,

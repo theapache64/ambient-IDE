@@ -1,9 +1,9 @@
-package com.github.theapache64.intellijled
+package com.github.theapache64.ambientide
 
 import com.github.theapache64.fastfilewatcher.FastFileWatcher
-import com.github.theapache64.intellijled.data.repo.RulesRepo
-import com.github.theapache64.intellijled.data.repo.WLEDRepo
-import com.github.theapache64.intellijled.model.IDE
+import com.github.theapache64.ambientide.data.repo.RulesRepo
+import com.github.theapache64.ambientide.data.repo.WLEDRepo
+import com.github.theapache64.ambientide.model.IDE
 import java.io.File
 
 class IntellijLED(
@@ -33,7 +33,7 @@ class IntellijLED(
         for (rule in rules) {
             if (rule.regex.matches(line)) {
                 ledRepo.updateSingleSegment(rule.segment).also {
-                    println("WLED State updated : $it -> '$line' -> '${rule.regex}'  ")
+                    println("WLED State : isUpdated=`$it`")
                 }
                 break
             }
