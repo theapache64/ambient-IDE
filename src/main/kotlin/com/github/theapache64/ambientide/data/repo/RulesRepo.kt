@@ -5,6 +5,7 @@ import com.github.theapache64.ambientide.model.Rule
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
+import javax.inject.Inject
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 
@@ -12,8 +13,8 @@ interface RulesRepo {
     fun parseRules(ide: IDE): List<Rule>
 }
 
-class RulesRepoImpl(
-    val json: Json
+class RulesRepoImpl @Inject constructor(
+    private val json: Json
 ) : RulesRepo {
 
     @OptIn(ExperimentalTime::class)

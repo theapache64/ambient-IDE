@@ -5,14 +5,13 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import kotlinx.coroutines.runBlocking
 
-// CLI Main
+// For instant debugging (without assemble and load)
 fun main(args: Array<String>) = runBlocking {
     App.args = args
     App().onCreate()
 }
 
 class MainComponent : StartupActivity, DumbAware {
-
     override fun runActivity(project: Project) {
         println("App started~!!! $project")
         App.args = arrayOf(
@@ -20,5 +19,4 @@ class MainComponent : StartupActivity, DumbAware {
         )
         App().onCreate()
     }
-
 }

@@ -1,16 +1,19 @@
 package com.github.theapache64.ambientide
 
-import com.github.theapache64.fastfilewatcher.FastFileWatcher
 import com.github.theapache64.ambientide.data.repo.RulesRepo
 import com.github.theapache64.ambientide.data.repo.WLEDRepo
+import com.github.theapache64.ambientide.di.module.CoreModule
 import com.github.theapache64.ambientide.model.IDE
+import com.github.theapache64.fastfilewatcher.FastFileWatcher
 import java.io.File
+import javax.inject.Inject
+import javax.inject.Named
 
-class IntellijLED(
-    val logFile: File,
+class AmbientIDE @Inject constructor(
+    @Named(CoreModule.namedLogFile) private val logFile: File,
     rulesRepo: RulesRepo,
     private val ledRepo: WLEDRepo,
-    ide : IDE
+    ide: IDE,
 ) {
     private val rules = rulesRepo.parseRules(ide)
 

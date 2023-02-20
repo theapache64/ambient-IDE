@@ -2,6 +2,7 @@ package com.github.theapache64.ambientide.data.repo
 
 import com.github.theapache64.wled.WLED
 import com.github.theapache64.wled.model.State
+import javax.inject.Inject
 
 interface WLEDRepo {
     suspend fun updateSingleSegment(segment: State.Segment): Boolean
@@ -9,7 +10,7 @@ interface WLEDRepo {
     suspend fun power(boolean: Boolean): Boolean
 }
 
-class WLEDRepoImpl(
+class WLEDRepoImpl @Inject constructor(
     private val wled: WLED
 ) : WLEDRepo {
     override suspend fun updateSingleSegment(segment: State.Segment): Boolean {
