@@ -6,9 +6,6 @@ import com.theapache64.cyclone.core.Intent
 
 class App : Application() {
 
-    companion object{
-        lateinit var args: Array<String>
-    }
     override fun onCreate() {
         super.onCreate()
         startActivity(Intent(MainActivity::class))

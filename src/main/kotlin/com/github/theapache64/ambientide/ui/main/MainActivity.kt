@@ -14,7 +14,6 @@ class MainActivity : Activity() {
     override fun onCreate() {
         super.onCreate()
         DaggerAppComponent.builder()
-            .coreModule(CoreModule(IDE.AndroidStudio))
             .build()
             .inject(this)
         mainViewModel.init()
