@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
 
-    implementation("com.github.theapache64:cyclone:1.0.0-alpha02")
+    implementation("com.github.theapache64:cyclone:1.0.0-beta01")
 
     val daggerVersion = "2.45"
     implementation("com.google.dagger:dagger:$daggerVersion")

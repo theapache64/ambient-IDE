@@ -7,9 +7,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val ambientIDE: AmbientIDE
 ) {
-    fun init() {
-        runBlocking {
-            ambientIDE.start()
-        }
+    suspend fun init() {
+        ambientIDE.start()
     }
 }

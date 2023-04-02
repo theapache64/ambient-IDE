@@ -6,12 +6,12 @@ import com.github.theapache64.ambientide.model.IDE
 import com.theapache64.cyclone.core.Activity
 import javax.inject.Inject
 
-class MainActivity : Activity() {
+class `MainActivity : Activity() {
 
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    override fun onCreate() {
+    override suspend fun onCreate() {
         super.onCreate()
         DaggerAppComponent.builder()
             .build()

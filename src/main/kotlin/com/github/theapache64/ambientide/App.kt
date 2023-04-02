@@ -6,7 +6,7 @@ import com.theapache64.cyclone.core.Intent
 
 class App : Application() {
 
-    override fun onCreate() {
+    override suspend fun onCreate() {
         super.onCreate()
         startActivity(Intent(MainActivity::class))
     }
