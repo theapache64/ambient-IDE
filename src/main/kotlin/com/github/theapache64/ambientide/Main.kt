@@ -24,6 +24,6 @@ class MainComponent : StartupActivity, DumbAware {
 
     override fun runActivity(project: Project) {
         // not interested
-        println("Zstarting ambient-IDE")
+        println("starting ambient-IDE")
     }
 }
