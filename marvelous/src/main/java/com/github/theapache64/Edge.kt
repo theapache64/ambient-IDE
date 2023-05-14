@@ -5,8 +5,10 @@ import com.github.theapache64.wled.model.State
 import com.trickl.palette.Palette
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.GraphicsEnvironment
@@ -19,7 +21,7 @@ import kotlin.system.measureTimeMillis
 const val verticalLedCount = 18
 const val horizontalCount = 32
 val sx = 1
-val ledsPerSeg = 5
+val ledsPerSeg = 3
 
 val verticalSegCount = verticalLedCount / ledsPerSeg
 val horizontalSegCount = horizontalCount / ledsPerSeg
@@ -86,12 +88,22 @@ suspend fun main() {
 
 
         measureTimeMillis {
-            process(
-                wled, screenSize, verticalSliceHeight, horizontalSliceWidth, leftImage, topImage, rightImage, bottomImage
-            )
-        }.let {
-            println("Took $it process one frame")
+            try {
+                withTimeout(500){
+                    measureTimeMillis {
+                        process(
+                            wled, screenSize, verticalSliceHeight, horizontalSliceWidth, leftImage, topImage, rightImage, bottomImage
+                        )
+                    }.let {
+                        println("Took $it process one frame")
+                    }
+                }
+            }catch (e: TimeoutCancellationException){
+                println("Timed out : ${e.message}")
+            }
         }
+
+
     }
 }
 
@@ -120,7 +132,7 @@ suspend fun process(
         val position = count + 1
         val y = leftImage.height - (verticalSliceHeight * position)
         val cropped = leftImage.getSubimage(0, y, leftImage.width, verticalSliceHeight)
-        leftMap[count] = Palette.from(cropped).generate().dominantSwatch?.color
+        leftMap[count] = Palette.from(cropped).generate().dominantSwatch?.color ?: Color.BLACK
     }
 
     // process top image
@@ -128,7 +140,7 @@ suspend fun process(
     repeat(horizontalSegCount) { count ->
         val x = horizontalSliceWidth * count
         val cropped = topImage.getSubimage(x, 0, horizontalSliceWidth, topImage.height)
-        topMap[count] = Palette.from(cropped).generate().dominantSwatch?.color
+        topMap[count] = Palette.from(cropped).generate().dominantSwatch?.color ?: Color.BLACK
     }
 
     // process right image
@@ -136,7 +148,7 @@ suspend fun process(
     repeat(verticalSegCount) { count ->
         val y = verticalSliceHeight * count
         val cropped = rightImage.getSubimage(0, y, rightImage.width, verticalSliceHeight)
-        rightMap[count] = Palette.from(cropped).generate().dominantSwatch?.color
+        rightMap[count] = Palette.from(cropped).generate().dominantSwatch?.color ?: Color.BLACK
     }
 
     // process bottom image
@@ -145,7 +157,7 @@ suspend fun process(
         val position = count + 1
         val x = bottomImage.width - (horizontalSliceWidth * position)
         val cropped = bottomImage.getSubimage(x, 0, horizontalSliceWidth, bottomImage.height)
-        bottomMap[count] = Palette.from(cropped).generate().dominantSwatch?.color
+        bottomMap[count] = Palette.from(cropped).generate().dominantSwatch?.color ?: Color.BLACK
     }
 
 
@@ -189,10 +201,7 @@ suspend fun process(
     }
 
 
-    measureTimeMillis {
-        wled.updateState(State(seg = segment))
-    }
-
+    wled.updateState(State(seg = segment))
 
     prevSegment = segment
 
