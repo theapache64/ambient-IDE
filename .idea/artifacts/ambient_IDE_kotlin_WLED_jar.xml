@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ambient-IDE.kotlin-WLED:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ambient_IDE_kotlin_WLED_jar</output-path>
+    <root id="archive" name="ambient-IDE.kotlin-WLED.jar" />
+  </artifact>
+</component>

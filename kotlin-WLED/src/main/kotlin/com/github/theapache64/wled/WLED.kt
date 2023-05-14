@@ -4,11 +4,14 @@ import com.github.theapache64.wled.model.State
 import com.github.theapache64.wled.model.UpdateStateResponse
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.http.Body
 import retrofit2.http.POST
+import java.util.concurrent.TimeUnit
 
 private interface WLEDApi {
     @POST("/json/state")
@@ -27,6 +30,7 @@ class WLED(
             ignoreUnknownKeys = true
             encodeDefaults = true
         }
+
 
         Retrofit.Builder()
             .baseUrl("http://$domain")
