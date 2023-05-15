@@ -87,22 +87,19 @@ suspend fun main() {
         ImageIO.write(bottomImage, "png", File("bottom_new.png"))*/
 
 
-        measureTimeMillis {
-            try {
-                withTimeout(500){
-                    measureTimeMillis {
-                        process(
-                            wled, screenSize, verticalSliceHeight, horizontalSliceWidth, leftImage, topImage, rightImage, bottomImage
-                        )
-                    }.let {
-                        println("Took $it process one frame")
-                    }
+        try {
+            withTimeout(1000){
+                measureTimeMillis {
+                    process(
+                        wled, screenSize, verticalSliceHeight, horizontalSliceWidth, leftImage, topImage, rightImage, bottomImage
+                    )
+                }.let {
+                    println("Took $it process one frame")
                 }
-            }catch (e: TimeoutCancellationException){
-                println("Timed out : ${e.message}")
             }
+        }catch (e: TimeoutCancellationException){
+            println("Timed out : ${e.message}")
         }
-
 
     }
 }
